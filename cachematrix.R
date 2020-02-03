@@ -3,6 +3,10 @@
 
 ## Write a short comment describing this function
 
+## makeCacheMatrix() is required to populate and or retrieve the inverse.
+## inv is set to NULL, initialinzing it as an object that will be used later.
+## X << y defines the deafult value of x as an empty numeric vector.
+## The getters and setters set the data values within an object.
 makeCacheMatrix <- function(x = matrix()) {
         inv <- NULL
         set <- function(y) {
@@ -21,6 +25,11 @@ makeCacheMatrix <- function(x = matrix()) {
 
 ## Write a short comment describing this function
 
+## This function computes the inverse of the above special "matrix", makeCacheMatrix. 
+## It checks to see if the inverse has already been calculated in the environment, 
+## then retrieves the inverse from the cache. If the inverse is not NULL, 
+## it gets the matrix and calculates the inverse with solve.
+
 cacheSolve <- function(x, ...) {
         ## Return a matrix that is the inverse of 'x'
 		inv <- x$getInverse()
@@ -33,19 +42,3 @@ cacheSolve <- function(x, ...) {
         x$setInverse(inv)
         inv
     }
-
-## Testing my matrix.
-
- aMatrix <- makeCacheMatrix(matrix(c(-2, 4, 1, -3),2,2))
- 
-# aMatrix$set(matrix(c(-2, 4, 1, -3),2,2)) 
- aMatrix$get()
- aMatrix$getInverse()
- 
-## Testing the inverse of the matrix.
-cacheSolve(aMatrix)
-cacheSolve(aMatrix)
-aMatrix$getInverse()
-aMatrix$set(matrix(c(4, 4, 2, 8),2,2)) 
-aMatrix$get()
-cacheSolve(aMatrix)
